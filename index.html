@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="StaffSync — Modern staff management, time tracking, and payroll dashboard for businesses.">
+    <title>StaffSync — Staff Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- ========== LOGIN ========== -->
+        <section id="view-login" class="auth-view active">
+            <div class="auth-container">
+                <div class="auth-card glass">
+                    <div class="brand">
+                        <div class="brand-icon">⚡</div>
+                        <h1>StaffSync</h1>
+                        <p class="tagline">Smart Staff Management</p>
+                    </div>
+                    <form id="form-login" autocomplete="off">
+                        <div class="input-group">
+                            <label for="login-email">Email or Mobile</label>
+                            <input type="text" id="login-email" placeholder="you@company.com or 07xxxxxxxxx" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="btn-login">Sign In</button>
+                    </form>
+                    <p class="auth-switch">Don't have an account? <a href="#" id="goto-signup">Sign Up</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SIGNUP ========== -->
+        <section id="view-signup" class="auth-view">
+            <div class="auth-container">
+                <div class="auth-card glass">
+                    <div class="brand">
+                        <div class="brand-icon">⚡</div>
+                        <h1>Create Account</h1>
+                        <p class="tagline">Join StaffSync today</p>
+                    </div>
+                    <form id="form-signup" autocomplete="off">
+                        <div class="input-group">
+                            <label for="signup-name">Full Name</label>
+                            <input type="text" id="signup-name" placeholder="John Smith" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signup-email">Email or Mobile</label>
+                            <input type="text" id="signup-email" placeholder="you@company.com or 07xxxxxxxxx" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" placeholder="Min 6 characters" required
+                                minlength="6">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="btn-signup">Create Account</button>
+                    </form>
+                    <p class="auth-switch">Already have an account? <a href="#" id="goto-login">Sign In</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CHOOSE ROLE ========== -->
+        <section id="view-choose-role" class="auth-view">
+            <div class="auth-container">
+                <div class="role-card glass">
+                    <h2>What would you like to do?</h2>
+                    <p class="tagline">Choose how you want to use StaffSync</p>
+                    <div class="role-options">
+                        <button class="role-btn" id="btn-create-company">
+                            <span class="role-icon">🏢</span>
+                            <span class="role-title">Create a Company</span>
+                            <span class="role-desc">Set up your business and manage staff</span>
+                        </button>
+                        <button class="role-btn" id="btn-join-company">
+                            <span class="role-icon">🤝</span>
+                            <span class="role-title">Join a Company</span>
+                            <span class="role-desc">Request to join an existing company</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CREATE COMPANY ========== -->
+        <section id="view-create-company" class="auth-view">
+            <div class="auth-container">
+                <div class="auth-card glass">
+                    <div class="brand">
+                        <span class="brand-icon">🏢</span>
+                        <h1>Create Company</h1>
+                        <p class="tagline">You'll be the company owner</p>
+                    </div>
+                    <form id="form-create-company" autocomplete="off">
+                        <div class="input-group">
+                            <label for="company-name">Company Name</label>
+                            <input type="text" id="company-name" placeholder="Acme Corp" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="company-hourly-rate">Hourly Rate (£)</label>
+                            <input type="number" id="company-hourly-rate" placeholder="12.50" step="0.01" min="0"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Create Company</button>
+                    </form>
+                    <p class="auth-switch"><a href="#" id="back-to-role-from-create">← Back</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== JOIN COMPANY ========== -->
+        <section id="view-join-company" class="auth-view">
+            <div class="auth-container">
+                <div class="auth-card glass">
+                    <div class="brand">
+                        <span class="brand-icon">🤝</span>
+                        <h1>Join Company</h1>
+                        <p class="tagline">Enter the company code to send a join request</p>
+                    </div>
+                    <form id="form-join-company" autocomplete="off">
+                        <div class="input-group">
+                            <label for="join-code">Company Code</label>
+                            <input type="text" id="join-code" placeholder="e.g. ACME-7X3F" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Send Join Request</button>
+                    </form>
+                    <p class="auth-switch"><a href="#" id="back-to-role-from-join">← Back</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== WAITING FOR APPROVAL ========== -->
+        <section id="view-waiting" class="auth-view">
+            <div class="auth-container">
+                <div class="auth-card glass centered">
+                    <div class="waiting-icon">⏳</div>
+                    <h2>Waiting for Approval</h2>
+                    <p class="tagline">Your join request has been sent to the company owner.<br>You'll be able to access
+                        the dashboard once approved.</p>
+                    <div class="status-badge pending">PENDING</div>
+                    <button class="btn btn-outline" id="btn-refresh-status">Refresh Status</button>
+                    <p class="auth-switch"><a href="#" id="btn-logout-waiting">Sign Out</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== REJECTED ========== -->
+        <section id="view-rejected" class="auth-view">
+            <div class="auth-container">
+                <div class="auth-card glass centered">
+                    <div class="waiting-icon">❌</div>
+                    <h2>Access Denied</h2>
+                    <p class="tagline">Your join request was rejected by the company owner.</p>
+                    <div class="status-badge rejected">REJECTED</div>
+                    <button class="btn btn-outline" id="btn-logout-rejected">Sign Out</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== OWNER DASHBOARD ========== -->
+        <section id="view-owner-dashboard" class="dashboard-view">
+            <nav class="sidebar glass">
+                <div class="sidebar-brand">
+                    <div class="brand-icon small">⚡</div>
+                    <span>StaffSync</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-tab="owner-requests">
+                            <span class="nav-icon">📋</span> Join Requests
+                        </a></li>
+                    <li><a href="#" class="nav-link" data-tab="owner-staff">
+                            <span class="nav-icon">👥</span> Staff List
+                        </a></li>
+                    <li><a href="#" class="nav-link" data-tab="owner-salary">
+                            <span class="nav-icon">💷</span> Salary Reports
+                        </a></li>
+                    <li><a href="#" class="nav-link" data-tab="owner-settings">
+                            <span class="nav-icon">⚙️</span> Settings
+                        </a></li>
+                </ul>
+                <div class="sidebar-footer">
+                    <div class="user-info">
+                        <div class="avatar" id="owner-avatar">O</div>
+                        <div>
+                            <div class="user-name" id="owner-name">Owner</div>
+                            <div class="user-role">Company Owner</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" id="btn-logout-owner">Sign Out</button>
+                </div>
+            </nav>
+            <main class="dashboard-main">
+                <header class="dashboard-header">
+                    <div>
+                        <h2 id="owner-dashboard-title">Join Requests</h2>
+                        <p class="company-code-display">Company Code: <span id="display-company-code"
+                                class="code-badge">—</span></p>
+                    </div>
+                </header>
+                <div class="tab-content active" id="tab-owner-requests">
+                    <div class="card glass" id="requests-container">
+                        <div class="loading">Loading…</div>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-owner-staff">
+                    <div class="card glass" id="staff-list-container">
+                        <div class="loading">Loading…</div>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-owner-salary">
+                    <div class="salary-controls glass">
+                        <div class="input-group inline">
+                            <label>Period</label>
+                            <select id="salary-period">
+                                <option value="daily">Today</option>
+                                <option value="weekly" selected>This Week</option>
+                                <option value="monthly">This Month</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card glass" id="salary-report-container">
+                        <div class="loading">Loading…</div>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-owner-settings">
+                    <div class="card glass">
+                        <h3>Company Settings</h3>
+                        <form id="form-company-settings">
+                            <div class="input-group">
+                                <label for="setting-company-name">Company Name</label>
+                                <input type="text" id="setting-company-name" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="setting-hourly-rate">Hourly Rate (£)</label>
+                                <input type="number" id="setting-hourly-rate" step="0.01" min="0" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Settings</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <!-- ========== STAFF DASHBOARD ========== -->
+        <section id="view-staff-dashboard" class="dashboard-view">
+            <nav class="sidebar glass">
+                <div class="sidebar-brand">
+                    <div class="brand-icon small">⚡</div>
+                    <span>StaffSync</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-tab="staff-clock">
+                            <span class="nav-icon">⏱️</span> Clock In/Out
+                        </a></li>
+                    <li><a href="#" class="nav-link" data-tab="staff-hours">
+                            <span class="nav-icon">📊</span> My Hours
+                        </a></li>
+                    <li><a href="#" class="nav-link" data-tab="staff-earnings">
+                            <span class="nav-icon">💷</span> Earnings
+                        </a></li>
+                </ul>
+                <div class="sidebar-footer">
+                    <div class="user-info">
+                        <div class="avatar" id="staff-avatar">S</div>
+                        <div>
+                            <div class="user-name" id="staff-name">Staff</div>
+                            <div class="user-role">Staff Member</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" id="btn-logout-staff">Sign Out</button>
+                </div>
+            </nav>
+            <main class="dashboard-main">
+                <header class="dashboard-header">
+                    <div>
+                        <h2 id="staff-dashboard-title">Clock In / Out</h2>
+                        <p class="company-name-display" id="staff-company-name">—</p>
+                    </div>
+                </header>
+                <div class="tab-content active" id="tab-staff-clock">
+                    <div class="clock-section">
+                        <div class="clock-card glass">
+                            <div class="live-time" id="live-clock">00:00:00</div>
+                            <div class="clock-date" id="live-date">—</div>
+                            <div class="clock-status" id="clock-status">Not clocked in</div>
+                            <div class="clock-elapsed" id="clock-elapsed"></div>
+                            <div class="clock-actions">
+                                <button class="btn btn-clock-in" id="btn-clock-in">🟢 Clock In</button>
+                                <button class="btn btn-clock-out" id="btn-clock-out" disabled>🔴 Clock Out</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card glass" id="today-entries">
+                        <h3>Today's Entries</h3>
+                        <div id="today-entries-list">
+                            <p class="empty-state">No entries today</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-staff-hours">
+                    <div class="stats-row">
+                        <div class="stat-card glass">
+                            <div class="stat-value" id="stat-today-hours">0h 0m</div>
+                            <div class="stat-label">Today</div>
+                        </div>
+                        <div class="stat-card glass">
+                            <div class="stat-value" id="stat-week-hours">0h 0m</div>
+                            <div class="stat-label">This Week</div>
+                        </div>
+                        <div class="stat-card glass">
+                            <div class="stat-value" id="stat-month-hours">0h 0m</div>
+                            <div class="stat-label">This Month</div>
+                        </div>
+                    </div>
+                    <div class="card glass" id="hours-history">
+                        <h3>Recent History</h3>
+                        <div id="hours-history-list">
+                            <p class="empty-state">No history yet</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-staff-earnings">
+                    <div class="stats-row">
+                        <div class="stat-card glass accent">
+                            <div class="stat-value" id="stat-today-earnings">£0.00</div>
+                            <div class="stat-label">Today</div>
+                        </div>
+                        <div class="stat-card glass accent">
+                            <div class="stat-value" id="stat-week-earnings">£0.00</div>
+                            <div class="stat-label">This Week</div>
+                        </div>
+                        <div class="stat-card glass accent">
+                            <div class="stat-value" id="stat-month-earnings">£0.00</div>
+                            <div class="stat-label">This Month</div>
+                        </div>
+                    </div>
+                    <div class="card glass">
+                        <div class="rate-display">
+                            <span>Your Hourly Rate:</span>
+                            <span class="rate-value" id="staff-hourly-rate">£0.00/hr</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <!-- Toast -->
+        <div id="toast" class="toast"></div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
